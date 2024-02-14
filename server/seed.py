@@ -23,7 +23,7 @@ if __name__ == "__main__":
     
     new_burger_2 = Hamburger(
       name = "Wham Bam Thank You Lamb",
-      description = "It's a lamb-tastic delight that'll leave you saying, 'Thank you, lamb!' "
+      description = "It's a lamb-tastic delight that'll leave you saying, Thank you, lamb! "
     )
     
     db.session.add(new_burger_2)

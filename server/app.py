@@ -1,7 +1,7 @@
 from config import app, migrate
 from models import db
 from rich import print
-from db_utils import get_all_burgers
+from db_utils import get_all_burgers, get_burger_by_id
 
 
 
@@ -19,8 +19,26 @@ def get_main_choice():
 def display_all_burgers():
   burgers = get_all_burgers()
   for burger in burgers:
-    print(f"Name: {burger.name}")
-    print(f"Description: {burger.description}")
+        print(f"{burger.id} | [bold][blue1]{burger.name}[/blue1][/bold]")
+        print(f"[deep_sky_blue1]{burger.description}[/deep_sky_blue1]")
+    
+    
+  print(f"How would you like to proceed?")
+  print(f"1. See more about a burger")
+  print(f"2. Return to main menu")
+  choice = input()
+  if choice == "1":
+    choose_burger_by_id()
+  else:
+    return
+    
+    
+def choose_burger_by_id():
+  search_id = input(f"Enter burger by the ID you would like to view")
+  burger = get_burger_by_id(search_id)
+  print(
+    f"{burger.id} | [bold][blue1]{burger.name}[/blue1][/bold] | {burger.description}")
+    
     
   
   
@@ -38,9 +56,9 @@ if __name__ == "__main__":
       display_main_menu()
       choice = get_main_choice()
       if choice == "1":
-        display_all_burgers
+        display_all_burgers()
       elif choice == "2":
-        print("Exiting Burger Hut")
+        print("Exiting Burger Hut, see you soon!")
         break
         
       break
