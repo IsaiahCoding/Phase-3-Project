@@ -12,6 +12,8 @@ class Hamburger(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String, unique = True)
     description = db.Column(db.String)
+    
+    ingredients = db.relationship("Ingredient", back_populates = "hamburger")
 
 #Do you want to customize your burgers?
 #1 - yes (Let's create)
@@ -27,4 +29,5 @@ class Ingredient(db.Model):
     
     
     hamburger_id = db.Column(db.Integer, db.ForeignKey("burgers.id"))
+    hamburger = db.relationship("Hamburger", back_populates = "ingredients")
     
