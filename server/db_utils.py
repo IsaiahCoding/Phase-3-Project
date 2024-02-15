@@ -7,5 +7,5 @@ def get_all_burgers():
 def get_burger_by_id(id):
     return db.session.get(Hamburger, id)
 
-def get_burger_by_ingredient(id):
-    return db.session.get(Ingredient, id)
+def get_all_ingredients():
+    return db.session.query(Ingredient).all()

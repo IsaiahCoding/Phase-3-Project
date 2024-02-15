@@ -1,7 +1,7 @@
 from config import app, migrate
 from models import db
 from rich import print
-from db_utils import get_all_burgers, get_burger_by_id, get_burger_by_ingredient
+from db_utils import get_all_burgers, get_burger_by_id #get_burger_by_ingredient
 
 
 
@@ -11,39 +11,39 @@ def display_welcome():
 def display_main_menu():
   print ("\n[bold]Main Menu[/bold]\n")
   print("[bold]1. View Burgers[/bold]\n")
-  print ("[bold]2. Exit Burger Hut[/bold]\n")
+  print ("[bold]2. Create A New Burger[/bold]\n")
   
 def get_main_choice():
-  return input("Enter your choice")
+  return input("Enter your choice: ")
 
+###############Shows all burger with details##########
 def display_all_burgers():
   burgers = get_all_burgers()
   for burger in burgers:
         print(f"{burger.id} | [bold][blue1]{burger.name}[/blue1][/bold]")
         print(f"[deep_sky_blue1]{burger.description}[/deep_sky_blue1]")
     
-    
+ ##########this prints option for how the user would like to continue###########   
   print(f"How would you like to proceed?")
   print(f"1. See more about a burger")
   print(f"2. Return to main menu")
-  print(f"3. Create a new burger")
+  
   choice = input()
   if choice == "1":
     choose_burger_by_id()
   elif choice == "2":
-    create_new_burger()
-  else:
-    return display_welcome()
+    display_main_menu()
     
-
-
+    
+##########selects the burger the user wants to see by ID#############    
 def choose_burger_by_id():
-  
-  search_id = input(f"Enter burger by the ID you would like to view")
+  search_id = input(f"Enter burger by the ID you would like to view: ")
   burger = get_burger_by_id(search_id)
   
   print(f"{burger.id} | [bold][blue1]{burger.name}[/blue1][/bold] |{burger.description}")
 
+
+  
   
     
     
@@ -65,7 +65,7 @@ if __name__ == "__main__":
       if choice == "1":
         display_all_burgers()
       elif choice == "2":
-        print("Exiting Burger Hut, see you soon!")
+        print("Create A Burger coming soon...")
         break
         
       break
