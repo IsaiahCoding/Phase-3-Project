@@ -28,6 +28,8 @@ class Ingredient(db.Model):
     name = db.Column(db.String)
     
     
-    hamburger_id = db.Column(db.Integer, db.ForeignKey("burgers.id"))
+    hamburger_id = db.Column(db.Integer, db.ForeignKey("burgers.id"), nullable = True)
     hamburger = db.relationship("Hamburger", back_populates = "ingredients")
     
+
+
