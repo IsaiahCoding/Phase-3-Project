@@ -1,9 +1,11 @@
 from config import app
+from faker import Faker
 
 from models import *
 
 if __name__ == "__main__":
   with app.app_context():
+    fake = Faker()
    
     
     print("Clearing out tables...")
@@ -219,5 +221,10 @@ if __name__ == "__main__":
     ]
     db.session.add_all(new_ingredient)
     db.session.commit()
+    
+    for _ in range(20):
+      ing = Ingredient(name = fake.word())
+      db.session.add(ing)
+      db.session.commit()
     
     
