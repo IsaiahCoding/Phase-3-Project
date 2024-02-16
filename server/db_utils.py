@@ -34,7 +34,7 @@ def remove_ingredient_from_burger(burger):
     db.session.commit()
     
     
-def create_burger():
+def create_burger(burger):
     ingredient_names = [ingredient.name for ingredient in db.session.query(Ingredient).all() if not ingredient.hamburger_id]
     title = "Which ingredient would you like to add?"
     name = input(f"What do you wanna call your burger?")
