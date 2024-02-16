@@ -1,7 +1,7 @@
 from config import app, migrate
 from models import db
 from rich import print
-from db_utils import get_all_burgers, get_burger_by_id , get_ingredient_by_id, add_ingredient_to_burger, remove_ingredient_from_burger
+from db_utils import get_all_burgers, get_burger_by_id , get_ingredient_by_id, add_ingredient_to_burger, remove_ingredient_from_burger,create_burger
 
 
 
@@ -78,6 +78,9 @@ def handle_custom_choice(choice, burger):
     remove_ingredient_from_burger(burger)
   elif choice == "3":
     display_all_burgers()
+    
+    
+   
 
 
     
@@ -91,7 +94,7 @@ def handle_custom_choice(choice, burger):
 
   
 
-######function deletes ingredient from a burger########
+
 
 
 
@@ -126,7 +129,7 @@ if __name__ == "__main__":
       if choice == "1":
         display_all_burgers()
       elif choice == "2":
-        print("Create A Burger coming soon...")
+        create_burger()
         break
         
       break
